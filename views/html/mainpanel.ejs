@@ -1,0 +1,81 @@
+  <%
+    //const colCount = 3;
+
+    // const columns = [];
+
+    // let processed = 0;
+
+    // for (let i = 0; i < colCount; i++) {
+    //   const thisColItemCount = Math.min(parseInt(content.length / colCount), content.length - processed);
+
+    //   columns.push(content.slice(processed, processed + thisColItemCount));
+
+    //   processed += thisColItemCount;
+    // }
+
+    const columns = [
+      content.filter((item, index) => (index % 2 === 0)),
+      content.filter((item, index) => ((index - 1) % 2 === 0)),
+      content.filter((item, index) => ((index - 2) % 2 === 0))
+    ];
+  %>
+
+  <%/* Table cols */%>
+  <h1 class="text-center mt-5">Table cols</h1>
+  <center class="wrapper">
+    <div class="webkit">
+      <table class="outer" align="center">
+        <% columns.forEach((arr) => { %>
+          <tr class="three-column">
+            <td>
+              <% arr.forEach((add) => { %>
+                <table class="column">
+                  <tbody>
+                    <tr>
+                      <td class="inner">
+                        <table class="contents">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <img src="<%= add.image %>" width="180" alt="">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="text">
+                                <h4><%= add.name %></h4>
+                                Scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut erat.
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              <% }); %>
+            </td>
+          </tr>
+        <% }); %>
+      </table>
+    </div>
+  </center>
+
+
+  <%/* Bootstrap */%>
+  <h1 class="text-center m-5">Bootstrap cols</h1>
+  <div class="row text-center">
+
+    <% content.forEach((add) => { %>
+      <div class="col-md-4 col-sm-6">
+        <div class="card">
+          <img class="card-img-top" src="<%= add.image %>" alt="Card image cap" width="100%" height="200px">
+          <div class="card-body">
+            <h4 class="card-title"><%= add.name %></h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">More info <i class="fas fa-external-link-square-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+
+  </div> <%/* row text-center */%>
